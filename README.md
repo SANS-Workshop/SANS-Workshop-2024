@@ -1,4 +1,4 @@
-# SANS CloudSecNext Summit 2024 - Workshop
+# SANS CloudSecNext Summit 2024 - Workshop.
 
 ## Prerequisites 
 **Required**
