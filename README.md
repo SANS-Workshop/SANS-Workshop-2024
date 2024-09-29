@@ -104,6 +104,9 @@ From the Source Control Dialog you can add a comment for your commit and push th
 
 ### Development with Rego Playground
 We can use the [Rego Playground](https://play.openpolicyagent.org/) to do virtual development. We can copy the terraform plan outputs into the input section and work on the policy in the coding section. The rego output is displayed in the outputs and any print statements have display in the browser's developer console.
+<br>
+<img src="https://i.imgur.com/BCuLgYC.png" alt="Source Control Menu" width="500"/>
+
 
 ### Local Development - Optional
 You can also do development on your local machine. Setting that up is covered in the [Appendix - Local Development - Optional](#appendix---local-development---optional) section. We will  walk through it after we have gone through [Exercise 1 - Github Actions and a Failing Pipeline](#exercise-1---github-actions-and-a-failing-Pipeline), for those who are interested.
@@ -158,9 +161,8 @@ When running the pipeline there are 3 outputs that are particularly useful for d
 
 ### Review an OPA Policy
 There are already two OPA Policy created in:
-* policies/pass.rego - this is a stripped down policy that always passes.
-* policies/rds/password.rego - this policy ensures a plaintext password is not set for the database.
-
+* [policies/pass.rego](policies/pass.rego) - this is a stripped down policy that always passes.
+* [policies/rds/password.rego](policies/rds/password.rego) - this policy ensures a plaintext password is not set for the database.
 
 ### Exercise 1 - Github Actions and a Failing Pipeline
 In this exercise we want to trigger Github Actions to test our OPA checks, and observe both a pass and fail output. For the later scenario, we will then to correct our code to get the pipeline to pass.
