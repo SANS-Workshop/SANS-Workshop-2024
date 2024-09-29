@@ -1,1 +1,1 @@
-#resource "aws_securityhub_account" "example" {}
+resource "aws_securityhub_account" "example" {}
