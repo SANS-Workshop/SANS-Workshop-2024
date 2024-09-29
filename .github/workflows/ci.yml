@@ -61,15 +61,14 @@ jobs:
       - name: Validate OPA # Does the OPA (policy as code) validation of the terraform outputs with rego
         working-directory: ./terraform/${{ matrix.terraform_dirs }}
         run: |
-          conftest test --all-namespaces -p ../../policies tfplan.json --ouput json > opa-std-out-${{ matrix.terraform_dirs }}.json || true
+          conftest test --all-namespaces -p ../../policies tfplan.json > opa-std-out-${{ matrix.terraform_dirs }}.txt || true
           conftest test --all-namespaces -p ../../policies --trace tfplan.json > opa-trace-${{ matrix.terraform_dirs }}.txt || true
+          conftest test --all-namespaces -p ../../policies tfplan.json --output json || true
           conftest test --all-namespaces -p ../../policies tfplan.json --output github
       - name: Print OPA Std Out # Print the OPA/Rego output for debugging
         if: always()
         working-directory: ./terraform/${{ matrix.terraform_dirs }}
-        run: |
-          jq . opa-std-out-${{ matrix.terraform_dirs }}.json > opa-std-out-${{ matrix.terraform_dirs }}-pretty.json
-          cat opa-std-out-${{ matrix.terraform_dirs }}-pretty.json
+        run: cat opa-std-out-${{ matrix.terraform_dirs }}.txt
       - name: Print OPA Trace # Print the OPA/Rego trace statememnts for debugging
         if: always()
         working-directory: ./terraform/${{ matrix.terraform_dirs }}

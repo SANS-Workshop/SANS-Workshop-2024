@@ -111,7 +111,7 @@ You can also do development on your local machine. Setting that up is covered in
 ## Exercises
 
 ### Review the pipeline
-Github Actions defines a workflow pipeline in [.github/workflows/ci.yml](.github/workflows/ci.yml). Lets take a look at the steps it performs to do validation of the planned Terraform.
+GitHub Actions defines a workflow pipeline in [.github/workflows/ci.yml](.github/workflows/ci.yml). Lets take a look at the steps it performs to do validation of the planned Terraform.
 
 ``` yaml
 name: OPA Terraform Validation
@@ -149,6 +149,12 @@ jobs:
       - name: Store OPA Trace # Store the OPA/rego trace output in case we want to dowload it
         ...
 ```
+
+When running the pipeline there are 3 outputs that are particularly useful for debugging:
+* Print Terraform Plan - _Displays the terraform output that OPA is evaluating_
+* Validate OPA - _Displays the response of the OPA evaluation_
+* Print OPA Std Out - _Displays the standard output from the evaluation. This will include any print statements that have been added to the rego code_
+* Print OPA Trace - _The debug output from rego. It details out the evaluations it is doing to get to its result_
 
 ### Review an OPA Policy
 There are already two OPA Policy created in:
